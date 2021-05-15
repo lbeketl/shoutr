@@ -1,2 +1,11 @@
+<h1>Dashboard</h1>
 
- <%= render 'shout' %>
+<%= form_for @shout do |form| %>
+  <%= form.fields_for :content do |content_form| %>
+  <%= content_form.text_field :body, placeholder: "shout here!", 
+                                     required: true %>
+  <% end %>
+  <%= form.submit "Shout!" %>
+<% end %>
+
+<%= render @shout %>

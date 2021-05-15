@@ -1,7 +1,11 @@
 <div>
-  <%= link_to @shout.username, @shout.user %>
-  <%= @shout.content.body %>
+  <%= link_to shout.username, shout.user %>
+  <% if shout.content.instance_of? TextShout %>
+    <%= shout.content.body %>
+    <% else %>
+      <%= image_tag(shout.content.image(:thumb)) %>
+    <% end %>
   <%= link_to @shout do %>
-    <%= time_ago_in_words(@shout.created_at) %> ago
+    <%= time_ago_in_words(shout.created_at) %> ago
   <% end %>
 </div>
